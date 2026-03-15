@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mitali Keskar Designs</title>
+
+<style>
+
+    /* Animation keyframes */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* start 50px below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);   /* final position */
+  }
+}
+
+/* Apply animation to the text */
+.animate-text {
+  opacity: 0; /* start hidden */
+  animation: fadeSlideIn 1.5s ease-out forwards; /* duration 1.5s */
+}
+
+/* FONT */
+
+@font-face{
+font-family:"Santorini";
+src:url("fonts/Santorini.ttf");
+}
+
+/* GLOBAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0d0d0d;
+color:white;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:100;
+}
+
+.logo{
+font-family:"Santorini";
+font-size:34px;
+letter-spacing:2px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+opacity:0.8;
+font-size:14px;
+}
+
+nav a:hover{
+opacity:1;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures the video covers entire area */
+  z-index: -2;       /* behind everything */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* dark overlay for readability */
+  z-index: -1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;           /* above the video */
+  color: white;
+  padding: 20px;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  max-width: 800px;
+  line-height: 1.2;
+  font-family: "Santorini", sans-serif; /* your custom font */
+}
+/* SCROLL SHOWCASE */
+
+.scroll-showcase{
+position:relative;
+}
+
+.sticky{
+position:sticky;
+top:0;
+height:100vh;
+overflow:hidden;
+}
+
+.showcase-bg{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+transition:1s ease;
+}
+
+.showcase-bg::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+}
+
+/* PROJECT TITLE */
+
+.project-title{
+position:absolute;
+top:140px;
+left:8%;
+font-size:44px;
+font-weight:600;
+z-index:5;
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+
+.project-title:hover{
+opacity:0.7;
+}
+
+/* SCROLL SPACE */
+
+.scroll-space{
+height:450vh;
+}
+
+/* PROJECT GRID */
+
+.projects{
+padding:120px 8%;
+}
+
+.projects h2{
+font-size:32px;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1a1a1a;
+border-radius:10px;
+overflow:hidden;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-info{
+padding:20px;
+}
+
+.card-info p{
+opacity:0.6;
+font-size:14px;
+}
+
+/* SERVICES */
+
+.services-hero {
+  position: relative;
+  height: 80vh; /* adjust as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.services-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.services-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+.services-text {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 20px;
+}
+
+.services-text h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-family: "Santorini", sans-serif;
+}
+
+.services-text p {
+  font-size: 18px;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+/* CONTACT */
+
+.contact-hero {
+  position: relative;
+  height: 80vh; /* adjust as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.contact-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.contact-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: -1;
+}
+
+.contact-text {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 20px;
+}
+
+.contact-text h2 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-family: "Santorini", sans-serif;
+}
+
+.contact-text p {
+  font-size: 18px;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+.contact-content {
+  padding: 50px 8%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #1a1a1a;
+  color: white;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #ccc;
+}
+
+.contact-form button {
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: none;
+  background: #ff7f50; /* accent color */
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #ff5c1f;
+}
+
+footer{
+padding:30px;
+text-align:center;
+opacity:0.5;
+border-top:1px solid rgba(255,255,255,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+  
+  .santorini-style {
+    font-family: 'Sacramento', cursive;
+    font-size: 32px;      /* Adjust size as needed */
+    letter-spacing: 1px;  /* Makes it look more high-end */
+    font-weight: 400;
+    color: #ffffff;          /* Change to your preferred color */
+  }
+</style>
+
+<div class="santorini-style">
+  Mitali keskar designs
+</div>
+
+<nav>
+<a href="">Home</a>
+<a href="#" id="projectsLink">Projects</a>
+<a href="#" id="servicesLink">Services</a>
+<a href="#" id="contactLink">Contact</a>
+<a href="https://www.instagram.com/mitaliikeskardesigns" target="_blank">Instagram</a>
+<a href="#" onclick="window.open('https://www.linkedin.com/in/ar-mitali-m-keskar-7410b812b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', '_blank')">Linkedin</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+  <!-- Video background -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="video1.mp4" type="video/mp4">
+  </video>
+
+  <!-- Dark overlay to make text readable -->
+  <div class="hero-overlay"></div>
+
+  <!-- Text overlay -->
+  <div class="hero-text">
+  <h1 class="animate-text">Visualizing Architecture Before It Exists</h1>
+</div>
+
+</section>
+
+<!-- SCROLL SHOWCASE -->
+
+<section class="scroll-showcase">
+
+<div class="sticky">
+
+<a href="" class="project-title" id="title">
+Project One
+</a>
+
+<div class="showcase-bg" id="bg"></div>
+
+</div>
+
+<div class="scroll-space"></div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects">
+<section class="projects" id="projects">
+  <!-- Video hero + project grid -->
+
+<h2>Featured Projects</h2>
+
+<div class="grid" id="projectGrid"></div>
+</section>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services">
+
+  <div class="services-hero">
+
+    <!-- Video background for services -->
+    <video autoplay muted loop playsinline class="services-video">
+      <source src="video2.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark overlay for readability -->
+    <div class="services-overlay"></div>
+
+    <!-- Text overlay -->
+    <div class="services-text">
+        <section class="services" id="services">
+  <!-- Video hero + services grid -->
+
+      <h1>Our Services</h1>
+      <p>Architectural visualization || interior rendering || immersive 3D walkthroughs.</p>
+      
+    </div>
+
+  </div>
+
+  <!-- Services grid below -->
+  
+</section>
+</section>
+
+</div>
+
+</section>
+
+<section class="contact">
+
+  <!-- Video background for Start a Project -->
+  <div class="contact-hero">
+
+    <video autoplay muted loop playsinline class="contact-video">
+      <source src="video3.mov" type="video/mp4">
+    </video>
+
+    <div class="contact-overlay"></div>
+
+    <div class="contact-text">
+      <h2>Start a Project</h2>
+      <p>Contact us to bring your architectural ideas to life. Let's create something amazing together.</p>
+    </div>
+
+  </div>
+  <section class="contact" id="contact">
+  <!-- Video hero + contact form here -->
+
+
+  <div class="contact-content">
+
+  <form class="contact-form" action="https://formspree.io/f/xreyadqd" method="POST">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+
+    <input type="email" name="email" placeholder="Your Email" required>
+
+    <input type="text" name="subject" placeholder="Project Subject" required>
+
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+
+  </form>
+
+</div>
+</section>
+</section>
+
+<footer>
+
+© 2026 Mitali Keskar Designs
+
+</footer>
+
+<script>
+
+/* SHOWCASE DATA */
+
+const showcase=[
+
+{
+title:"SHIV KRUPA",
+image:"image1.avif"
+},
+
+{
+title:"THYME",
+image:"image2.avif"
+},
+
+{
+title:"Coffee Shop",
+image:"image3.avif"
+},
+
+{
+title:"EXTRAVAGANZA",
+image:"image4.avif"
+},
+
+{
+title:"THE ROYAL BANQUET",
+image:"image5.avif"
+}
+
+];
+
+const bg=document.getElementById("bg");
+const title=document.getElementById("title");
+
+let current=0;
+
+bg.style.backgroundImage=`url(${showcase[0].image})`;
+
+window.addEventListener("scroll",()=>{
+
+let scroll=window.scrollY;
+
+let height=document.querySelector(".scroll-space").offsetHeight;
+
+let progress=scroll/height;
+
+let index=Math.floor(progress*showcase.length);
+
+if(index>=showcase.length) index=showcase.length-1;
+
+if(index!==current){
+
+current=index;
+
+bg.style.opacity=0;
+
+setTimeout(()=>{
+
+bg.style.backgroundImage=`url(${showcase[index].image})`;
+
+title.textContent=showcase[index].title;
+
+bg.style.opacity=1;
+
+},300);
+
+}
+
+});
+
+/* FEATURED PROJECTS */
+
+const projects=[
+
+{
+title:"VILLA",
+category:"Residential",
+image:"image8.avif",
+link:""
+},
+
+{
+title:"WAVES AND WHISPERS",
+category:"Interior",
+image:"image7.avif",
+link:""
+},
+
+{
+title:"TASTES AND BUDS",
+category:"Commercial",
+image:"image6.avif",
+link:""
+},
+
+{
+title:"SHIV KRUPA",
+category:"Workspace",
+image:"image1.avif",
+link:""
+},
+
+{
+title:"THYME",
+category:"Concept",
+image:"image2.avif",
+link:""
+}
+
+];
+
+const grid=document.getElementById("projectGrid");
+
+projects.forEach(p=>{
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<a href="${p.link}" style="text-decoration:none;color:white">
+
+<img src="${p.image}">
+
+<div class="card-info">
+
+<h3>${p.title}</h3>
+
+<p>${p.category}</p>
+
+</div>
+
+</a>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+</script>
+<script>
+document.getElementById("projectsLink").addEventListener("click", function(e){
+    e.preventDefault(); // prevent default anchor behavior
+
+    // scroll to top of projects section
+    const projectsSection = document.getElementById("projects");
+
+    projectsSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"  // aligns the section to top of viewport
+    });
+});
+</script>
+<script>
+document.getElementById("contactLink").addEventListener("click", function(e){
+    e.preventDefault(); // prevent default anchor behavior
+
+    window.scrollTo({
+        top: document.body.scrollHeight, // scroll to the very bottom
+        behavior: "smooth"               // smooth scrolling
+    });
+});
+</script>
+<script>
+document.getElementById("servicesLink").addEventListener("click", function(e){
+    e.preventDefault(); // prevent default anchor behavior
+
+    const servicesSection = document.getElementById("services");
+
+    servicesSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"  // aligns section to top of viewport
+    });
+});
+</script>
+
+</body>
+</html>
